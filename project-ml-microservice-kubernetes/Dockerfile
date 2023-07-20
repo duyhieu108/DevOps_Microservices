@@ -1,3 +1,6 @@
+FROM python:3.8
+LABEL maintainer="Udacity"
+
 ## Step 1:
 # Create a working directory
 WORKDIR /app
@@ -8,10 +11,9 @@ COPY . app.py /app/
 
 ## Step 3:
 # Install packages from requirements.txt
-RUN pip install --upgrade pip &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt &&\
 # hadolint ignore=DL3013
-RUN pylint --disable=R,C,W1203,W1202 app.py
+ pylint --disable=R,C,W1203,W1202 app.py
 
 ## Step 4:
 # Expose port 80
