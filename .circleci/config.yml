@@ -16,7 +16,7 @@ jobs:
 
       - run:
         name: check repo content
-        command: |
+          command: |
           ls
           pwd
     
