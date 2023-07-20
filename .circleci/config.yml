@@ -15,11 +15,11 @@ jobs:
       - checkout
 
       - run:
-        name: check repo content
+          name: check repo content
           command: |
-          ls
-          pwd
-          cd project-ml-microservice-kubernetes
+            ls
+            pwd
+            cd project-ml-microservice-kubernetes
     
       # Download and cache dependencies
       - restore_cache:
