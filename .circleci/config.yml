@@ -15,10 +15,10 @@ jobs:
       - checkout
 
       - run:
-        name: check repo content
+          name: check repo content
           command: |
-          ls
-          pwd
+            ls
+            pwd
     
       # Download and cache dependencies
       - restore_cache:
