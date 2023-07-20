@@ -19,6 +19,7 @@ jobs:
           command: |
           ls
           pwd
+          cd project-ml-microservice-kubernetes
     
       # Download and cache dependencies
       - restore_cache:
