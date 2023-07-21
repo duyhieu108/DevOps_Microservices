@@ -10,4 +10,4 @@ docker build --tag=pyapp .
 docker images
 # Step 3: 
 # Run flask app
-docker run --publish 8000:80 pyapp
+docker run --detach --publish 8000:80 pyapp
