@@ -1,1 +1,58 @@
 <paste log output from Kubernetes-mediated prediction, here>
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ sh upload_docker.sh
+Docker ID and Image: hieudd
+Login Succeeded
+The push refers to repository [docker.io/hieudd/pyapp]
+690f78b643f1: Pushed
+b3ffcc690f2f: Pushed
+4d87fac7ec81: Pushed
+799a7872c8c7: Mounted from library/python
+715450468940: Mounted from library/python
+c9d608035aef: Mounted from library/python
+bb9c02680a15: Mounted from library/python
+a637c551a0da: Mounted from library/python
+2c8d31157b81: Mounted from library/python
+7b76d801397d: Mounted from library/python
+f32868cde90b: Mounted from library/python
+0db06dff9d9a: Mounted from library/python
+project4: digest: sha256:f7d978547bd1ceb25024c6abea42eca9e1a04e5a5e366a98dd924c811264d526 size: 2847
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ sh run_kubernetes.sh
+deployment.apps/project4 created
+NAME                       READY   STATUS              RESTARTS   AGE
+project4-8d6b5fcc7-qpnpt   0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ kubectl port-forward deployment.apps/project4 8000:80
+error: unable to forward port because pod is not running. Current status=Pending
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ kubectl get pods
+NAME                       READY   STATUS              RESTARTS   AGE
+project4-8d6b5fcc7-qpnpt   0/1     ContainerCreating   0          52s
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ kubectl get pods
+NAME                       READY   STATUS              RESTARTS   AGE
+project4-8d6b5fcc7-qpnpt   0/1     ContainerCreating   0          62s
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ kubectl get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+project4-8d6b5fcc7-qpnpt   1/1     Running   0          80s
+
+noname@DESKTOP-Q2I600U MINGW64 ~/Documents/GitHub/DevOps_Microservices/project-ml-microservice-kubernetes (master)
+$ kubectl port-forward deployment.apps/project4 8000:80
+Forwarding from 127.0.0.1:8000 -> 80
+Handling connection for 8000
+
+$ sh make_prediction.sh
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
