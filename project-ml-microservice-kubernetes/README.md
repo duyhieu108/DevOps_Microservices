@@ -45,6 +45,24 @@ source .devops/bin/activate
 ### Kubernetes Steps
 
 * Setup and Configure Docker locally
+	- Go to https://www.docker.com/products/docker-desktop/ and follow instructions to install
+	- Run command `docker --version` to verify
 * Setup and Configure Kubernetes locally
+	- Go to https://kubernetes.io/docs/tasks/tools/install-minikube/  and follow instructions to install
+	- Run command `kubectl version` to verify
 * Create Flask app in Container
+	- Run `./run_docker.sh` script
 * Run via kubectl
+	- Run `./run_kubernetes.sh` script
+
+### Files descriptions
+
+1. app.py: python Flask app for prediction
+2. Dockerfile: docker image's constructions to build Docker image
+3. make_prediction.sh: to run the prediction request with fixed data once docker container is already running
+4. Makefile: for automatic setup development environment and run lint check
+5. README.md: this file describe about projects
+6. requirements.txt: dependencies libs that required for app.py
+7. run_docker.sh: script to build and run docker container of this project
+8. run_kubernetes.sh: script to run the docker cluster with docker image built is ready
+9. upload_docker.sh: script to upload docker image to docker hub
